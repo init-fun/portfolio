@@ -1,0 +1,7 @@
+{% extends 'blog/base.html %'}
+{% block main_content %}
+{% if sent %}
+<h1>E-mail sucessfully semt</h1>
+<p> {{post.title}} </p>
+{% endif %}
+{% endblock main_content %}

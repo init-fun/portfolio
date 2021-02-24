@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block main_content %}
+<p>Have something to say? Comment down below...</p>
+{% if comment %}
+<!-- 1.  if the person has commented then show his comment along
+            with other peoples comment, 
+     2.  Sort the comment by reverse order of comment 
+-->
+
+{% else %}
+<!-- Show the comment form along with other comment -->
+{% endif %}
+{% endblock main_content %
