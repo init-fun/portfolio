@@ -1,6 +1,8 @@
+from typing import Annotated, NewType
 from django.core import paginator
 from django.shortcuts import render, get_object_or_404
-from .models import Post, Comment
+from .models import Post
+from .models import Comment
 
 # class based view import
 from django.views.generic import ListView
@@ -88,7 +90,7 @@ def post_share(request, post_id):
             cd = form.cleaned_data
 
             # send email
-            print(post.get_absolute_url())
+            # print(post.get_absolute_url())
             post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = f" {cd['name']} recommends you read {post.title}"
             message = f"Read {post.title} at {post_url} \n\n{cd['name']}'s comments: {cd['comments']}"

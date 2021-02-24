@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import post_detail, PostListView, post_share
 
+
 # from .views import post_list # function based url
 
 app_name = "blog"
