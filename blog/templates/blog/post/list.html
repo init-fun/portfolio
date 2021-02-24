@@ -2,7 +2,9 @@
 {% load static %}
 {% block main_content %}
 <h2>Posts</h2>
+
 <div class="container">
+
     {%for post in post_list%}
 
     {% if forloop.first or forloop.counter0|divisibleby:2 %}
@@ -36,8 +38,12 @@
     </div>
     {% endif %}
     {% endfor %}
+    <div class="text-center">
+        {% include "blog/pagination.html" with page=page_obj %}
+
+    </div>
 
 </div>
 <!-- {% include "blog/pagination.html" with page=post_list %}  #function based view-->
-{% include "blog/pagination.html" with page=page_obj %}
+
 {% endblock main_content %}
