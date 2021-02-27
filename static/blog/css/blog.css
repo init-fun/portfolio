@@ -102,6 +102,5 @@
   }
 
  /* all links */
- a:link {text-decoration:none;}
-a:visited {color:#1eff00;text-decoration:none;}
+a:link {text-decoration:none;}
 a:hover {text-decoration:underline;}
