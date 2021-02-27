@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import post_detail, PostListView, post_share
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 # from .views import post_list # function based url
 
@@ -14,4 +15,4 @@ urlpatterns = [
         "<int:year>/<int:month>/<int:day>/<slug:post>/", post_detail, name="post_detail"
     ),
     path("<int:post_id>/share/", post_share, name="post_share"),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

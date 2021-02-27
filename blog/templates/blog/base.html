@@ -83,13 +83,15 @@
 
 
     <main class="container">
-        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark"
-            style="background-image:'blog_project\mysite\static\img\abc.jpg';">
-            <div class="col-md-6 px-0">
-                <p class="lead my-3">Hey there, </p>
+
+        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark" style="height: 400px;">
+            <div style="position: relative;color: white;">
+                <img src="{% static 'img/abc.jpg' %}" alt='hero' style='width: 100%;'>
+            </div>
+            <div class="col-md-12 px-0">
+                <p class="lead my-3">Hey there,</p>
                 <h1 class="display-4 fst-italic">My name is Kapil</h1>
                 <p class="lead my-3">A backend software developer on the way to become a full-stack developer.</p>
-
             </div>
         </div>
 
@@ -110,7 +112,7 @@
                 <div class="row">
                     <!--Grid column-->
                     <div class="col-lg-7 col-md-12 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Footer text</h5>
+                        <h5 class="text-uppercase">About me</h5>
 
                         <p>
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
@@ -119,29 +121,34 @@
                         </p>
                     </div>
                     <div class="col-lg-5 col-md-12 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Socials</h5>
+                        <h5>Find me here</h5>
 
                         <section class="mb-4">
 
                             <!-- Twitter -->
-                            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-                                data-mdb-ripple-color="dark"><i class="fab fa-twitter fa-lg"></i></a>
-
+                            <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                                href="https://twitter.com/_kapilraj" data-toggle="tooltip" data-placement="top"
+                                title="@_kapilraj" role="button" role="button" data-mdb-ripple-color="dark"><i
+                                    class="fab fa-twitter fa-lg"></i></a>
 
                             <!-- Linkedin -->
-                            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-                                data-mdb-ripple-color="dark"><i class="fab fa-linkedin fa-lg"></i></a>
+                            <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                                href="https://www.linkedin.com/in/kapil-raj/" data-toggle="tooltip" data-placement="top"
+                                title="kapil-raj" role="button" role="button" data-mdb-ripple-color="dark"><i
+                                    class="fab fa-linkedin fa-lg"></i></a>
                             <!-- Github -->
-                            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://github.com/init-fun"
+                                data-toggle="tooltip" data-placement="top" title="init-fun" role="button" role="button"
                                 data-mdb-ripple-color="dark"><i class="fab fa-github fa-lg"></i></a>
 
                             <!-- Discrod -->
-                            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" data-toggle="tooltip"
+                                data-placement="top" title="GullibleMe#3500" role="button"
                                 data-mdb-ripple-color="dark"><i class="fab fa-discord fa-lg"></i></a>
                             <!-- email -->
-                            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-                                style="text-decoration: none;" data-mdb-ripple-color="dark"><i
-                                    class="fas fa-at fa-lg"></i> sde.kapilraj@gmail.com</a>
+                            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" data-toggle="tooltip"
+                                data-placement="top" title="e-mail id :)" role="button" style="text-decoration: none;"
+                                data-mdb-ripple-color="dark"><i class="fas fa-at fa-lg"></i> sde.kapilraj@gmail.com</a>
 
 
                     </div>
