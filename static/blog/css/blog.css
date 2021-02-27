@@ -1,7 +1,4 @@
-body{
-  background-repeat: no-repeat;
-  background-color: darkgreen;
-}
+
 .blog-header {
     line-height: 1;
     border-bottom: 1px solid #e5e5e5;
@@ -104,6 +101,7 @@ body{
     margin-bottom: 0;
   }
 
-  #abc{
-    color:green;
-  }
+ /* all links */
+ a:link {text-decoration:none;}
+a:visited {color:#1eff00;text-decoration:none;}
+a:hover {text-decoration:underline;}
