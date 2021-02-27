@@ -43,7 +43,8 @@ class PostListView(ListView):
     paginate_by = 2
     template_name = "blog/post/list.html"
 
-
+def indexView(request):
+    return render(request, 'blog/front_page.html',{})
 # to display a single post
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(

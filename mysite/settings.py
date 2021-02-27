@@ -122,7 +122,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
 STATIC_URL = "/static/"
+MEDIA_URL = "/media/"  # where we want to save the image in the django project
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
 # for testing sending the emails
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # actual SMTP emails

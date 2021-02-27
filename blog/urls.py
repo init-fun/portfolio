@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import post_detail, PostListView, post_share
+from .views import post_detail, PostListView, post_share, indexView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -10,7 +10,8 @@ app_name = "blog"
 # just by blog:post_list or blog:post_detail
 urlpatterns = [
     # path("", post_list, name="post_list"), # function based view url
-    path("", PostListView.as_view(), name="post_list"),
+    path("", indexView, name="index"),
+    path("post/", PostListView.as_view(), name="post_list"),
     path(
         "<int:year>/<int:month>/<int:day>/<slug:post>/", post_detail, name="post_detail"
     ),
