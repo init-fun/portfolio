@@ -24,7 +24,7 @@
                         <p>{{ post.tags.all|join:", " }}</p>
                     </strong>
                     <h3 class="mb-0">
-                        <a href="#">{{ post.title }}</a>
+                        <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
 
                     </h3>
                     <p>

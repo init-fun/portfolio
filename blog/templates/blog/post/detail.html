@@ -15,6 +15,17 @@
 
 </div>
 <div class="col p-4 d-flex flex-column position-static">
+    <!-- similar post -->
+    <div>
+        <h2>Similar posts</h2>
+        {% for post in similar_posts %}
+        <p>
+            <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+        </p>
+        {% empty %}
+        There are no similar posts yet.
+        {% endfor %}
+    </div>
     <strong class="d-inline-block mb-2 text-primary">Comments</strong>
     {% with comments.count as total_comments %}
     <h2>
