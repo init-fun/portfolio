@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+# taggin
+from taggit.managers import TaggableManager
 
 # our customer model manager, which will return all published post
 # Post.published.all()
@@ -25,6 +27,9 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     STATUS_CHOICES = (("draft", "Draft"), ("published", "Published"))
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="draft")
+    # taggins
+
+    tags = TaggableManager()
 
     class Meta:
         ordering = ("-publish",)  # a tuple

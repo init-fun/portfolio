@@ -14,37 +14,51 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .forms import EmailPostForm, CommentForm
 from django.core.mail import send_mail
 
+# taggin
+from taggit.models import Tag
+
 # all published post view (function based view)
-# def post_list(request):
-#     object_list = Post.published.all()
+def post_list(request, tag_slug=None):
+    object_list = Post.published.all()
+    # taggin
+    tag = None
 
-#     # paginator
-#     paginator = Paginator(object_list, 2)  # 2 posts on each page
-#     page = request.GET.get("page")
-#     try:
-#         posts = paginator.page(page)
-#     except PageNotAnInteger:
-#         # if page is not an integer deliver the first page
-#         posts = paginator.page(1)
-#     except EmptyPage:
-#         # if page is out of range then deliver the first page
-#         posts = paginator.page(paginator.num_pages)
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        object_list = object_list.filter(tags__in=[tag])
 
-#     context = {
-#         "post_list": posts,
-#         "page": page,
-#     }
-#     return render(request, "blog/post/list.html", context)
+    # paginator
+    paginator = Paginator(object_list, 2)  # 2 posts on each page
+    page = request.GET.get("page")
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # if page is not an integer deliver the first page
+        posts = paginator.page(1)
+    except EmptyPage:
+        # if page is out of range then deliver the first page
+        posts = paginator.page(paginator.num_pages)
+
+    context = {
+        "post_list": posts,
+        "page": page,
+        "tag": tag,
+    }
+    return render(request, "blog/post/list.html", context)
+
 
 # all published post view (class based view)
-class PostListView(ListView):
-    queryset = Post.published.all()
-    context_object_name = "post_list"  # context variable name
-    paginate_by = 2
-    template_name = "blog/post/list.html"
+# class PostListView(ListView):
+#     queryset = Post.published.all()
+#     context_object_name = "post_list"  # context variable name
+#     paginate_by = 2
+#     template_name = "blog/post/list.html"
+
 
 def indexView(request):
-    return render(request, 'blog/front_page.html',{})
+    return render(request, "blog/front_page.html", {})
+
+
 # to display a single post
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(
