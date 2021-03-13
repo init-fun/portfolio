@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Post, Comment
+from .models import WorkExp
 
 # Register your models here.
 # admin.site.register(Post)
@@ -21,3 +22,17 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "post", "created", "active")
     list_filter = ("active", "created", "updated")
     search_fields = ("name", "email", "body")
+    ordering = ("created",)
+
+
+@admin.register(WorkExp)
+class WorkExpAdmin(admin.ModelAdmin):
+    search_fields = ("organization", "position_held")
+    ordering = ("from_year",)
+    list_display = (
+        "from_year",
+        "to_year",
+        "position_held",
+        "organization",
+        "summary",
+    )

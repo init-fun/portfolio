@@ -1,0 +1,45 @@
+{% extends 'blog/base.html'%}
+{% load static %}
+
+{% block front_page %}
+<!-- <div>
+    {{all_workexp_obj}}
+</div> -->
+
+
+<div class="container">
+    {% for post in all_workexp_obj %}
+    {% if forloop.first or forloop.counter0|divisibleby:3 %}
+    <div class="row ">
+        {% endif %}
+        <div class='col-md-4'>
+            <figure class="snip1376">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample17.jpg" alt="sample17" />
+                <figcaption>
+                    <div style="text-align: center;">
+
+                        <p class='text-muted'>({{post.from_year.year}} - {{post.to_year.year}})</p>
+
+                        <h3><code id='post_heading' class='text-uppercase'> {{post.position_held}}</code></h3>
+                        <p style="text-align: center;" class="font-italic text-muted text-uppercase">
+                            {{post.organization}}
+                        </p>
+
+                        <p>{{post.summary}}</p>
+
+
+                        <div>
+
+                            {{post.site_urls}}
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+
+        </div>
+        {% if forloop.counter|divisibleby:3 or forloop.last %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock front_page %}

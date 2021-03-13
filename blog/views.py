@@ -3,6 +3,8 @@ from django.core import paginator
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from .models import Comment
+from .models import WorkExp
+
 
 # similar post
 from django.db.models import Count
@@ -133,3 +135,10 @@ def post_share(request, post_id):
         "sent": sent,
     }
     return render(request, "blog/post/share.html", context)
+
+
+def WorkExpView(request):
+    all_workexp_obj = WorkExp.objects.all()
+
+    context = {"all_workexp_obj": all_workexp_obj}
+    return render(request, "blog/carrer.html", context)

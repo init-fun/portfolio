@@ -53,8 +53,17 @@ class Comment(models.Model):
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
 
-    class Meta:
-        ordering = ("created",)
-
     def __str__(self):
         return f"Comment by {self.name} on {self.post}"
+
+
+class WorkExp(models.Model):
+    from_year = models.DateField()
+    to_year = models.DateField()
+    position_held = models.CharField(max_length=100)
+    organization = models.CharField(max_length=200)
+    summary = models.TextField()
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"Was {self.position_held} at {self.organization} from {self.from_year} to {self.to_year}"
