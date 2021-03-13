@@ -3,63 +3,80 @@
 {% load crispy_forms_tags %}
 {% block main_content %}
 
-<div class="col p-4 d-flex flex-column position-static">
-    <strong class="d-inline-block mb-2 text-primary">Category - World</strong>
-    <h3 class="mb-0">{{post.title}}</h3>
-    <div class="mb-1 text-muted">{{post.updated}}</div>
-    <p class="card-text mb-auto">{{post.body}}</p>
+<div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-7 col-md-12 mb-4 mb-md-0">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">Blogpost</strong>
+                <h3 class="mb-0">{{post.title}}</h3>
+                <div class="mb-1 text-muted">{{post.updated}}</div>
+                <p class="card-text mb-auto">{{post.body}}</p>
 
-    <p>
-        <a href='{%url "blog:post_share" post.id %}'>Share this post.</a>
-    </p>
+                <p>
+                    <a href='{%url "blog:post_share" post.id %}'>Share this post.</a>
+                </p>
 
-</div>
-<div class="col p-4 d-flex flex-column position-static">
-    <!-- similar post -->
-    <div>
-        <h2>Similar posts</h2>
-        {% for post in similar_posts %}
-        <p>
-            <a href="{{post.get_absolute_url}}">{{post.title}}</a>
-        </p>
-        {% empty %}
-        There are no similar posts yet.
-        {% endfor %}
+            </div>
+            <div>
+                <h2>Similar posts</h2>
+                {% for post in similar_posts %}
+                <p>
+                    <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                </p>
+                {% empty %}
+                There are no similar posts yet.
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-12 mb-4 mb-md-0">
+            <div class="col p-4 d-flex flex-column position-static">
+                <!-- similar post -->
+
+                <strong class="d-inline-block mb-2 text-primary">Comments</strong>
+                {% with comments.count as total_comments %}
+                <h2>
+                    {{total_comments}} comment{{total_comments|pluralize}}
+                </h2>
+                {% endwith %}
+                <hr>
+                {% for comment in comments %}
+                <div>
+                    <p>
+                        Comment {{forloop.counter}} by {{comment.name}}
+                        {{comment.created}}
+                    </p>
+                    {{ comment.body|linebreaks }}
+                </div>
+                {% empty %}
+                <p>There are no comments yet.</p>
+                {% endfor %}
+
+                <hr>
+                {% if new_comment %}
+                <h2>Your comment has been added.</h2>
+                {% else %}
+                <h2>Add a new comment.</h2>
+                <form method='POST'>
+                    {{comment_form|crispy}}
+                    {% csrf_token %}
+
+                    <button type="submit" class='btn btn-primary btn-dark btn-block' value="Add commment">Add
+                        comment</button>
+                </form>
+
+                {% endif %}
+            </div>
+
+        </div>
+
+
     </div>
-    <strong class="d-inline-block mb-2 text-primary">Comments</strong>
-    {% with comments.count as total_comments %}
-    <h2>
-        {{total_comments}} comment{{total_comments|pluralize}}
-    </h2>
-    {% endwith %}
-    <hr>
-    {% for comment in comments %}
-    <div>
-        <p>
-            Comment {{forloop.counter}} by {{comment.name}}
-            {{comment.created}}
-        </p>
-        {{ comment.body|linebreaks }}
-    </div>
-    {% empty %}
-    <p>There are no comments yet.</p>
-    {% endfor %}
-
-    <hr>
-    {% if new_comment %}
-    <h2>Your comment has been added.</h2>
-    {% else %}
-    <h2>Add a new comment.</h2>
-    <form method='POST'>
-        {{comment_form|crispy}}
-        {% csrf_token %}
-        <p>
-            <input type="submit" value='Add comment'>
-        </p>
-    </form>
-
-    {% endif %}
 </div>
+
+
+
 
 
 

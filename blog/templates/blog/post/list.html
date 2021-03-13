@@ -2,9 +2,15 @@
 {% load static %}
 
 {% block main_content %}
-<h2>Posts</h2>
-
 <div class="container">
+    <div class="row py-4">
+        <div class="col-lg-9 mx-auto text-center">
+            <h1 class="display-4">Blog</h1>
+            <p class="lead mb-0">These are just some unfinished blogpost. Come again later, I promise you'll find a more
+                organized blogpsots. </p>
+
+        </div>
+    </div>
     {% if tag %}
     <h2>Posts tagged with '{{tag.name}}'</h2>
     {% endif %}
@@ -20,14 +26,21 @@
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
 
-                    <strong class="d-inline-block mb-2 text-primary">
-                        <p>{{ post.tags.all|join:", " }}</p>
+                    <strong class="d-inline-block text-primary">
+                        <!-- <p>{{ post.tags.all|join:", " }}</p> -->
+                        <p>{% for tag in post.tags.all %}
+                            <a href='{% url "blog:post_list_by_tag" tag.slug %}'>{{tag.name|capfirst }}</a>
+                            {% if not forloop.last %}
+                            ,
+                            {% endif %}
+                            {% endfor %}
+                        </p>
                     </strong>
                     <h3 class="mb-0">
                         <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
 
                     </h3>
-                    <p>
+                    <!-- <p>
                         Tags:
                         {% for tag in post.tags.all %}
                         <a href='{% url "blog:post_list_by_tag" tag.slug %}'>{{tag.name}}</a>
@@ -35,10 +48,12 @@
                         ,
                         {% endif %}
                         {% endfor %}
-                    </p>
+                    </p> -->
 
                     <div class="mb-1 text-muted">{{post.updated}}</div>
-                    <p class="card-text mb-auto">{{post.body}}
+                    <p class="card-text mb-auto">
+                        Click on the post title to read the whole blogpost.
+                        <!-- {{post.body}} -->
                         <!-- <a href="#" class="stretched-link">Continue reading</a> -->
 
                     </p>

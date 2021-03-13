@@ -1,15 +1,48 @@
 {% extends 'blog/base.html' %}
 {% load crispy_forms_tags %}
 {% block main_content %}
-{% if sent %}
-<h1>Email sent sucessfully</h1>
-<p>{{post.title}} was successfully sent to {{form.cleaned_data.to}}</p>
-{% else %}
-<h1>Share {{post.title}} by e-mail.</h1>
-<form method="POST">
-    {{form | crispy}}
-    {% csrf_token %}
-    <input type='submit' value="Send email">
-</form>
-{% endif %}
+
+
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <h1>Share '{{post.title}}' by e-mail.</h1>
+            <div class="card card-signin flex-row my-5">
+                <div class="card-img-left d-none d-md-flex">
+                    <!-- Background image for card set in CSS! -->
+                </div>
+                <!-- insert here -->
+                {% if sent %}
+                <h1>Email sent sucessfully</h1>
+                <p>{{post.title}} was successfully sent to {{form.cleaned_data.to}}</p>
+                {% else %}
+                <!-- end of insert here -->
+
+                <div class="card-body">
+                    <!-- <h5 class="card-title text-center">Register</h5> -->
+
+
+                    <form method="POST" class="form-signin">
+                        {{form | crispy}}
+                        {% csrf_token %}
+
+                        <button class="btn btn-lg text-center mt-2 small btn-primary btn-block text-uppercase"
+                            type="submit" value="Send email">Share</button>
+
+                    </form>
+
+
+                    {% endif %}
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock main_content %}
