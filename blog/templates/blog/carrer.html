@@ -8,6 +8,13 @@
 
 
 <div class="container">
+    <div class="row py-5">
+        <div class="col-lg-9 mx-auto text-center">
+            <h1 class="display-4">Career</h1>
+            <p class="lead mb-0">Here are the places I have worked till now </p>
+
+        </div>
+    </div>
     {% for post in all_workexp_obj %}
     {% if forloop.first or forloop.counter0|divisibleby:3 %}
     <div class="row ">
@@ -18,7 +25,9 @@
                 <figcaption>
                     <div style="text-align: center;">
 
-                        <p class='text-muted'>({{post.from_year.year}} - {{post.to_year.year}})</p>
+                        <p class='text-muted'>({{ post.from_year.year}} -
+                            {{post.to_year.year}})
+                        </p>
 
                         <h3><code id='post_heading' class='text-uppercase'> {{post.position_held}}</code></h3>
                         <p style="text-align: center;" class="font-italic text-muted text-uppercase">
