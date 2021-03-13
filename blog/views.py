@@ -138,7 +138,6 @@ def post_share(request, post_id):
 
 
 def WorkExpView(request):
-    all_workexp_obj = WorkExp.objects.all()
-
+    all_workexp_obj = WorkExp.objects.filter(active=True)
     context = {"all_workexp_obj": all_workexp_obj}
     return render(request, "blog/carrer.html", context)
