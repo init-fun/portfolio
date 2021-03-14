@@ -1,3 +1,4 @@
+from typing import Annotated, NewType
 from django.core import paginator
 from django.shortcuts import render, get_object_or_404
 from .models import Post
