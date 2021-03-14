@@ -68,3 +68,16 @@ class WorkExp(models.Model):
 
     def __str__(self):
         return f"Was {self.position_held} at {self.organization} from {self.from_year} to {self.to_year}"
+
+
+class ProjectModel(models.Model):
+    project_img = models.ImageField(upload_to="project_images/")
+    name = models.CharField(max_length=100)
+    summary = models.TextField()
+    tech_used = models.TextField()
+    project_url = models.URLField()
+    github_link = models.URLField()
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.name}"

@@ -23,4 +23,4 @@ urlpatterns = [
         name="post_detail",
     ),
     path("post/<int:post_id>/share/", post_share, name="post_share"),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

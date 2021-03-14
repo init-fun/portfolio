@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "nyj#wq&s^-dl+74uh&0qs0lq#f3a--fwbn+)a7)7!&_qw!lx@("
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = TEMPLATES_DEBUG = False
+DEBUG = TEMPLATES_DEBUG = True
 
 ALLOWED_HOSTS = ["kapilraj.herokuapp.com", "127.0.0.1"]
 
@@ -117,8 +117,10 @@ STATIC_URL = "/static/"
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-MEDIA_URL = "/media/"  # where we want to save the image in the django project
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"  # this will be the actual online URL
+MEDIA_ROOT = os.path.join(
+    BASE_DIR, "media"
+)  # this is place where are image will get uploaded
 
 
 # for testing sending the emails

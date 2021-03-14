@@ -4,6 +4,7 @@ from .models import Post
 from .models import Comment
 from .models import WorkExp
 
+from .models import ProjectModel
 
 # similar post
 from django.db.models import Count
@@ -138,5 +139,6 @@ def post_share(request, post_id):
 
 def WorkExpView(request):
     all_workexp_obj = WorkExp.objects.filter(active=True)
-    context = {"all_workexp_obj": all_workexp_obj}
+    all_projects = ProjectModel.objects.filter(active=True)
+    context = {"all_workexp_obj": all_workexp_obj, "all_projects": all_projects}
     return render(request, "blog/carrer.html", context)
