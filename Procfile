@@ -1,1 +1,1 @@
-web: waitress-serve --host=127.1.1.1 --port=8000 mysite.wsgi:application
+web: waitress-serve --port=$PORT mysite.wsgi:application
