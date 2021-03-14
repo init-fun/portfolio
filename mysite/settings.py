@@ -22,12 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "nyj#wq&s^-dl+k7a4puihl&r0aqjs0lq#f3a--fwbn+)a7)7!&_qw!lx@("
-SECRET_KEY = "nyj#wq&s^-dl+74uh&0qs0lq#f3a--fwbn+)a7)7!&_qw!lx@("
-
+# SECRET_KEY = "nyj#wq&s^-dl+74uh&0qs0lq#f3a--fwbn+)a7)7!&_qw!lx@("
+SECRET_KEY = os.environ[
+    "SECRET_KEY",
+]
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = TEMPLATES_DEBUG = True
+DEBUG = TEMPLATES_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["kapilraj.herokuapp.com", "127.1.1.1"]
 
 
 # Application definition
@@ -48,6 +50,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
