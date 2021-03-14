@@ -22,13 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "nyj#wq&s^-dl+k7a4puihl&r0aqjs0lq#f3a--fwbn+)a7)7!&_qw!lx@("
-SECRET_KEY = "nyj#wq&s^-dl+74uh&0qs0lq#f3a--fwbn+)a7)7!&_qw!lx@("
-# SECRET_KEY = os.environ["SECRET_KEY"]
+# SECRET_KEY = "nyj#wq&s^-dl+74uh&0qs0lq#f3a--fwbn+)a7)7!&_qw!lx@("
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = TEMPLATES_DEBUG = False
 
-ALLOWED_HOSTS = ["kapilraj.herokuapp.com", "127.1.1.1"]
+ALLOWED_HOSTS = ["kapilraj.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
@@ -128,12 +128,13 @@ USE_TZ = True
 
 
 STATIC_URL = "/static/"
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 MEDIA_URL = "/media/"  # where we want to save the image in the django project
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "live-static-files", "static-root")
 # for testing sending the emails
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # actual SMTP emails
