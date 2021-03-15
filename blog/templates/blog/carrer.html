@@ -18,8 +18,8 @@
     {% if forloop.first or forloop.counter0|divisibleby:3 %}
     <div class="row ">
         {% endif %}
-        <div class='col-md-4'>
-            <figure class="snip1376 shadow-sm" style="padding: 5px; ">
+        <div class='col-md-4' style="max-width:540px; display: inline-block;">
+            <figure class="snip1376 shadow-lg" style="padding: 5px; min-height: 250px;">
                 <!-- <img src="{{post.work_img.url}}" class="img-fluid d-block mx-auto mb-3" /> -->
                 <figcaption>
                     <div style="text-align: center; ">
@@ -64,7 +64,7 @@
 
         <div class="col-lg-4 col-md-3 mb-4 mb-lg-0">
 
-            <div class="card rounded border-0 shadow-sm">
+            <div class="card rounded border-0 shadow-lg">
                 <div class="p-4">
                     <!-- <img src="{{project.project_img.url}}" alt="" class="img-fluid d-block mx-auto mb-3"> -->
 
