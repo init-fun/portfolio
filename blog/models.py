@@ -28,6 +28,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     STATUS_CHOICES = (("draft", "Draft"), ("published", "Published"))
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="draft")
+    post_img = models.ImageField(upload_to="post_images/")
     # taggins
 
     tags = TaggableManager()

@@ -53,8 +53,27 @@
 }
 
 
+/* new */
+#module {
+  font-size: 1rem;
+  line-height: 1.5;
+}
 
-/* second css*/
 
+#module #collapseExample.collapse:not(.show) {
+  display: block;
+  height: 3rem;
+  overflow: hidden;
+}
 
-/* end of second css */
+#module #collapseExample.collapsing {
+  height: 3rem;
+}
+
+#module a.collapsed::after {
+  content: '+ Show More';
+}
+
+#module a:not(.collapsed)::after {
+  content: '- Show Less';
+}

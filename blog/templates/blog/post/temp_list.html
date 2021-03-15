@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block main_content %}
-
 <div class="container">
     <div class="row py-4">
         <div class="col-lg-9 mx-auto text-center">
@@ -13,7 +12,6 @@
             </p>
         </div>
     </div>
-
     {% if tag %}
     <h2>Posts tagged with '{{tag.name}}'</h2>
     {% endif %}
@@ -24,47 +22,40 @@
     {% if forloop.first or forloop.counter0|divisibleby:2 %}
     <div class="row">
         {% endif %}
+
         <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
 
-            <!-- new card -->
+                    <strong class="d-inline-block text-primary">
+                        <p>{% for tag in post.tags.all %}
+                            <a href='{% url "blog:post_list_by_tag" tag.slug %}'>{{tag.name|capfirst }}</a>
+                            {% if not forloop.last %}
+                            ,
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </strong>
+                    <h3 class="mb-0">
+                        <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
 
-            <div class="card mb-3" style="max-width: 540px; max-height: 250px; height: 250px;">
-                <div class="row no-gutters">
-                    <div class="col-md-12">
-                        <div class="card-body">
-                            <strong class="d-inline-block text-primary">
-                                <p>{% for tag in post.tags.all %}
-                                    <a href='{% url "blog:post_list_by_tag" tag.slug %}'>{{tag.name|capfirst }}</a>
-                                    {% if not forloop.last %}
-                                    ,
-                                    {% endif %}
-                                    {% endfor %}
-                                </p>
-                            </strong>
-                            <h4>
-                                {{ post.title }}
+                    </h3>
 
-                            </h4>
-
-                            <!-- paragraph body -->
-                            <p>{{post.body |truncatechars:240}}
-                                <!-- <a href="{{post.get_absolute_url}}">{{ post.title }}</a> -->
-
-                                <a href="{{post.get_absolute_url}}">Read more</a>
-
-                            </p>
-                            <!-- end of paragraph body -->
-
-                            <p class="card-text"><small class="text-muted">Last updated on {{post.publish}}</small></p>
-                        </div>
-                    </div>
+                    <div class="mb-1 text-muted">{{post.updated}}</div>
+                    <p class="card-text mb-auto">
+                        Click on the post title to read the whole blogpost.
+                    </p>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
+                        role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                        focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                            dy=".3em">Thumbnail</text>
+                    </svg>
                 </div>
             </div>
-            <!-- new card end -->
-
-            <!-- second try -->
-
-            <!--end of second try  -->
         </div>
         {% if forloop.counter|divisibleby:2 or forloop.last %}
     </div>
