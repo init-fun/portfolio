@@ -1,8 +1,11 @@
 from django.db import models
+from django.forms import widgets
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 import datetime
+import secrets, string
+
 
 # taggin
 from taggit.managers import TaggableManager
@@ -46,9 +49,15 @@ class Post(models.Model):
         )
 
 
+def anon_username():
+    random_string = string.ascii_letters + string.digits
+    username = "".join(secrets.choice(random_string) for i in range(10))
+    return username
+
+
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comment")
-    name = models.CharField(max_length=80)
+    name = models.CharField(max_length=10, default=anon_username)
     email = models.EmailField()
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
@@ -60,6 +69,7 @@ class Comment(models.Model):
 
 
 class WorkExp(models.Model):
+    work_img = models.ImageField(upload_to="work_images/")
     from_year = models.DateField()
     to_year = models.DateField()
     position_held = models.CharField(max_length=100)

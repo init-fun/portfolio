@@ -13,17 +13,18 @@
 
         </div>
     </div>
+    <hr>
     {% for post in all_workexp_obj %}
     {% if forloop.first or forloop.counter0|divisibleby:3 %}
     <div class="row ">
         {% endif %}
         <div class='col-md-4'>
-            <figure class="snip1376 shadow-sm">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample17.jpg" alt="sample17" />
+            <figure class="snip1376 shadow-sm" style="padding: 5px; ">
+                <!-- <img src="{{post.work_img.url}}" class="img-fluid d-block mx-auto mb-3" /> -->
                 <figcaption>
-                    <div style="text-align: center;">
+                    <div style="text-align: center; ">
 
-                        <p class='text-muted'>({{ post.from_year.year}} -
+                        <p class='text-muted' style="margin: 2px;">({{ post.from_year.year}} -
                             {{post.to_year.year}})
                         </p>
 
@@ -55,6 +56,7 @@
 
         </div>
     </div>
+    <hr>
     {% for project in all_projects %}
     {% if forloop.first or forloop.counter0|divisibleby:3 %}
     <div class="row pb-5 mb-4">
@@ -64,7 +66,7 @@
 
             <div class="card rounded border-0 shadow-sm">
                 <div class="p-4">
-                    <img src="{{project.project_img.url}}" alt="" class="img-fluid d-block mx-auto mb-3">
+                    <!-- <img src="{{project.project_img.url}}" alt="" class="img-fluid d-block mx-auto mb-3"> -->
 
                     <h5>{{project.name}}</h5>
                     <p class="text-muted font-italic">{{project.summary}}</p>

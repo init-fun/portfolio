@@ -7,22 +7,33 @@
     <!--Grid row-->
     <div class="row">
         <!--Grid column-->
+
         <div class="col-lg-7 col-md-12 mb-4 mb-md-0">
-            <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-primary">Blogpost</strong>
-                <h3 class="mb-0">{{post.title}}</h3>
-                <div class="mb-1 text-muted">{{post.updated}}</div>
-                <p class="card-text mb-auto">{{post.body}}</p>
+            <div class="card-body shadow-lg">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block text-primary">
+                        <p>{% for tag in post.tags.all %}
+                            <a href='{% url "blog:post_list_by_tag" tag.slug %}'>{{tag.name|capfirst }}</a>
+                            {% if not forloop.last %}
+                            ,
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </strong>
+                    <h3 class="mb-0">{{post.title}}</h3>
+                    <div class="mb-1 text-muted">{{post.updated}}</div>
+                    <p class="card-text mb-auto">{{post.body}}</p>
 
-                <p>
-                    <a href='{%url "blog:post_share" post.id %}'>Share this post.</a>
-                </p>
+                    <p style="margin-top: 20px;">
+                        <a href='{%url "blog:post_share" post.id %}'>Share this post.</a>
+                    </p>
 
+                </div>
             </div>
-            <div>
-                <h2>Similar posts</h2>
+            <div style="margin:20px;">
+                <h5>Similar posts</h5>
                 {% for post in similar_posts %}
-                <p>
+                <p style="margin-top: 10px;">
                     <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                 </p>
                 {% empty %}
@@ -30,23 +41,23 @@
                 {% endfor %}
             </div>
         </div>
+        <!-- comment/ second half -->
         <div class="col-lg-5 col-md-12 mb-4 mb-md-0">
             <div class="col p-4 d-flex flex-column position-static">
-                <!-- similar post -->
 
                 <strong class="d-inline-block mb-2 text-primary">Comments</strong>
                 {% with comments.count as total_comments %}
-                <h2>
+                <h5>
                     {{total_comments}} comment{{total_comments|pluralize}}
-                </h2>
+                </h5>
                 {% endwith %}
                 <hr>
                 {% for comment in comments %}
                 <div>
-                    <p>
+                    <!-- <p>
                         Comment {{forloop.counter}} by {{comment.name}}
                         {{comment.created}}
-                    </p>
+                    </p> -->
                     {{ comment.body|linebreaks }}
                 </div>
                 {% empty %}
@@ -57,20 +68,22 @@
                 {% if new_comment %}
                 <h2>Your comment has been added.</h2>
                 {% else %}
-                <h2>Add a new comment.</h2>
-                <form method='POST'>
-                    {{comment_form|crispy}}
-                    {% csrf_token %}
+                <h5>Add a new comment.</h5>
+                <div>
 
-                    <button type="submit" class='btn btn-primary btn-dark btn-block' value="Add commment">Add
-                        comment</button>
-                </form>
+                    <form method='POST'>
+                        {{comment_form|crispy}}
+                        {% csrf_token %}
 
+                        <button type="submit" class='btn btn-primary btn-dark btn-block '
+                            style='margin-top: 20px; padding: 5px;' value="Add commment">Add
+                            comment</button>
+                    </form>
+                </div>
                 {% endif %}
             </div>
 
         </div>
-
 
     </div>
 </div>
