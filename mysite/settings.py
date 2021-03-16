@@ -9,9 +9,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = os.environ["SECRET_KEY"]
-DEBUG = TEMPLATES_DEBUG = False
+# SECRET_KEY = os.environ["SECRET_KEY"]
+# DEBUG = TEMPLATES_DEBUG = False
 
+SECRET_KEY = "nyj#wq&s^-dl+74uh&0qs0lq#f3a--fwbn+)a7)7!&_qw!lx@("
+DEBUG = False
 
 ALLOWED_HOSTS = ["kapilraj.herokuapp.com", "127.0.0.1"]
 
