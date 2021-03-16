@@ -7,21 +7,31 @@
 
 <div class="container">
     <div class="row py-4">
-        <div class="col-lg-9 mx-auto text-center">
+        <div class="col-md-9 mx-auto text-center">
             <h1 class="display-4">Career</h1>
-            <p class="lead mb-0">Here are the places I have worked till now </p>
+            <p class="lead mb-0">Here is a little snapshot of my professional/academic life...</p>
 
         </div>
     </div>
     <hr>
-    {% for post in all_workexp_obj %}
-    {% if forloop.first or forloop.counter0|divisibleby:3 %}
-    <div class="row ">
-        {% endif %}
-        <div class='col-md-4' style="max-width:540px; display: inline-block;">
-            <figure class="snip1376 shadow-lg" style="padding: 5px; min-height: 250px;">
-                <!-- <img src="{{post.work_img.url}}" class="img-fluid d-block mx-auto mb-3" /> -->
-                <figcaption>
+    <!-- new one -->
+    <div class="container">
+
+        <!-- start of first row -->
+        <div class="row d-flex justify-content-center">
+            {% for post in all_workexp_obj %}
+            {% if forloop.first or forloop.counter0|divisibleby:3 %}
+            <div class="row d-flex justify-content-center">
+                {% endif %}
+                <!-- main card -->
+
+                <div class="col-md-4 shadow-lg p-5 m-2 text-center" style="max-width: 370px;">
+
+                    <img class="img-fluid" style="height:auto;" src="{{post.work_img.url}}"
+                        alt="Generic placeholder image">
+                    <!-- <h2>Heading</h2>
+                    <p>{{post.summary}}</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
                     <div style="text-align: center; ">
 
                         <p class='text-muted' style="margin: 2px;">({{ post.from_year.year}} -
@@ -35,58 +45,57 @@
 
                         <p>{{post.summary}}</p>
 
-
-                        <p class='text-muted'>{{project.project_url}}<br>{{project.github_link}}</p>
                     </div>
-                </figcaption>
-            </figure>
-
+                </div>
+                <!-- end of main card -->
+                {% if forloop.counter|divisibleby:3 or forloop.last %}
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
-        {% if forloop.counter|divisibleby:3 or forloop.last %}
+        <!-- end of row -->
+
     </div>
-    {% endif %}
-    {% endfor %}
-</div>
 
-<div class="container py-5">
-    <div class="row py-4">
-        <div class="col-lg-9 mx-auto text-center">
-            <h1 class="display-4">Projects</h1>
-            <p class="lead mb-0">List of some of the projects I have worked till now.</p>
+    <div class="container py-5">
+        <div class="row py-4">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="display-4">Projects</h1>
+                <p class="lead mb-0">List of some of the projects I have worked till now.</p>
 
+            </div>
         </div>
-    </div>
-    <hr>
-    {% for project in all_projects %}
-    {% if forloop.first or forloop.counter0|divisibleby:3 %}
-    <div class="row pb-5 mb-4">
-        {% endif %}
+        <hr>
+        {% for project in all_projects %}
+        {% if forloop.first or forloop.counter0|divisibleby:3 %}
+        <div class="row pb-5 mb-4">
+            {% endif %}
 
-        <div class="col-lg-4 col-md-3 mb-4 mb-lg-0">
+            <div class="col-lg-4 col-md-3 mb-4 mb-lg-0">
 
-            <div class="card rounded border-0 shadow-lg">
-                <div class="p-4">
-                    <!-- <img src="{{project.project_img.url}}" alt="" class="img-fluid d-block mx-auto mb-3"> -->
+                <div class="card rounded border-0 shadow-lg">
+                    <div class="p-4">
+                        <!-- <img src="{{project.project_img.url}}" alt="" class="img-fluid d-block mx-auto mb-3"> -->
 
-                    <h5>{{project.name}}</h5>
-                    <p class="text-muted font-italic">{{project.summary}}</p>
-                    <div style="margin-top: 4px; margin-bottom: 4px;">
+                        <h5>{{project.name}}</h5>
+                        <p class="text-muted font-italic">{{project.summary}}</p>
+                        <div style="margin-top: 4px; margin-bottom: 4px;">
 
-                        <p class="font-italic text-muted mb-0">{{project.tech_used}}
-                        </p>
-                        <a href="{{project.project_url}}">{{project.project_url}} </a>
-                        <a href="{{project.github_link}}">{{project.github_link}} </a>
+                            <p class="font-italic text-muted mb-0">{{project.tech_used}}
+                            </p>
+                            <a href="{{project.project_url}}">{{project.project_url}} </a>
+                            <a href="{{project.github_link}}">{{project.github_link}} </a>
+                        </div>
                     </div>
                 </div>
             </div>
+            {% if forloop.counter|divisibleby:3 or forloop.last %}
         </div>
-        {% if forloop.counter|divisibleby:3 or forloop.last %}
+        {% endif %}
+        {% endfor %}
+
     </div>
-    {% endif %}
-    {% endfor %}
-
-</div>
 
 
-<!-- end of second part -->
-{% endblock front_page %}
+    <!-- end of second part -->
+    {% endblock front_page %}
