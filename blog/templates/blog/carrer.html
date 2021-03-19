@@ -18,14 +18,14 @@
     <div class="container">
 
         <!-- start of first row -->
-        <div class="row d-flex justify-content-center">
+        <div class="row">
             {% for post in all_workexp_obj %}
             {% if forloop.first or forloop.counter0|divisibleby:3 %}
-            <div class="row d-flex justify-content-center">
+            <div class="row">
                 {% endif %}
                 <!-- main card -->
 
-                <div class="col-md-4 shadow-lg p-5 m-2 text-center" style="max-width: 370px;">
+                <div class="col-lg-4" style="width:300px;">
 
                     <img class="img-fluid" style="height:auto;" src="{{post.work_img.url}}"
                         alt="Generic placeholder image">
@@ -57,7 +57,7 @@
 
     </div>
 
-    <div class="container py-5">
+    <div class="container">
         <div class="row py-4">
             <div class="col-lg-9 mx-auto text-center">
                 <h1 class="display-4">Projects</h1>
@@ -71,7 +71,7 @@
         <div class="row pb-5 mb-4">
             {% endif %}
 
-            <div class="col-lg-4 col-md-3 mb-4 mb-lg-0">
+            <div class="col-lg-4 col-lg-3 mb-4 mb-lg-0">
 
                 <div class="card rounded border-0 shadow-lg">
                     <div class="p-4">
@@ -96,6 +96,6 @@
 
     </div>
 
-
-    <!-- end of second part -->
-    {% endblock front_page %}
+</div>
+<!-- end of second part -->
+{% endblock front_page %}
