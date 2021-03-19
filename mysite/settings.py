@@ -13,14 +13,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # DEBUG = TEMPLATES_DEBUG = False
 
 SECRET_KEY = "nyj#wq&s^-dl+74uh&0qs0lq#f3a--fwbn+)a7)7!&_qw!lx@("
-DEBUG = True
-
+# DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ["kapilraj.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "whitenoise.runserver_nostatic",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -115,14 +116,14 @@ USE_TZ = True
 
 
 STATIC_URL = "/static/"
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-MEDIA_URL = "/media/"  # this will be the actual online URL
+MEDIA_URL = "/media/"  # base url
 MEDIA_ROOT = os.path.join(
     BASE_DIR, "media"
 )  # this is place where are image will get uploaded
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # for testing sending the emails
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
