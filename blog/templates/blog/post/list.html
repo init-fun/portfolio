@@ -21,11 +21,10 @@
 
 
     {%for post in post_list%}
-
     {% if forloop.first or forloop.counter0|divisibleby:2 %}
     <div class="row">
         {% endif %}
-        <div class="col">
+        <div class="col-md-6">
             <div class="card mb-3" style="max-width: 540px;display: inline-block;">
                 <div class="row no-gutters" style="display: inline-block;">
                     <div class="col-md-12">
@@ -43,9 +42,16 @@
                                 {{ post.title }}
 
                             </h4>
+
+                            <!-- paragraph body -->
                             <p>{{post.body |truncatechars:240}}
+                                <!-- <a href="{{post.get_absolute_url}}">{{ post.title }}</a> -->
+
                                 <a href="{{post.get_absolute_url}}">Read more</a>
+
                             </p>
+                            <!-- end of paragraph body -->
+
                             <p class="card-text"><small class="text-muted">Last updated on {{post.publish}}</small></p>
                         </div>
                     </div>
@@ -58,7 +64,6 @@
     {% endfor %}
     <div class="text-center">
         {% include "blog/pagination.html" with page=post_list %}
-
     </div>
 </div>
 <div class="container">
@@ -77,9 +82,7 @@
                 </li>
                 {%endfor %}
             </ul>
-
         </div>
-
     </div>
 </div>
 {% endblock main_content %}
