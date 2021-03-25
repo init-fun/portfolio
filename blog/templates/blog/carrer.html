@@ -6,57 +6,54 @@
 {% block front_page %}
 
 <div class="container">
-    <div class="row py-4">
-        <div class="col-md-9 mx-auto text-center">
-            <h1 class="display-4">Career</h1>
-            <p class="lead mb-0">Here is a little snapshot of my professional/academic life...</p>
 
-        </div>
-    </div>
-    <hr>
-    <!-- new one -->
+    <!-- career -->
     <div class="container">
+        <div class="row py-4">
+            <div class="col-md-9 mx-auto text-center">
+                <h1 class="display-4">Career</h1>
+                <p class="lead mb-0">Here is a little snapshot of my professional/academic life...</p>
 
-        <!-- start of first row -->
-        <div class="row">
-            {% for post in all_workexp_obj %}
-            {% if forloop.first or forloop.counter0|divisibleby:3 %}
-            <div class="row">
-                {% endif %}
-                <!-- main card -->
+            </div>
+        </div>
+        <hr>
 
-                <div class="col-lg-4" style="width:300px;">
-
-                    <img class="img-fluid" style="height:auto;" src="{{post.work_img.url}}"
-                        alt="Generic placeholder image">
-                    <!-- <h2>Heading</h2>
-                    <p>{{post.summary}}</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-                    <div style="text-align: center; ">
-
+        {% for post in all_workexp_obj %}
+        {% if forloop.first or forloop.counter0|divisibleby:3 %}
+        <div class="row pd-5 mb-4">
+            {% endif %}
+            <div class="col-lg-4 col-lg-3 mb-4 mb-lg-0">
+                <div class="card rounded border-0 shadow-lg text-center">
+                    <div class="p-4">
+                        <!-- <img class="img-fluid" style="height:auto;" src="{{post.work_img.url}}"
+                            alt="Generic placeholder image"> -->
                         <p class='text-muted' style="margin: 2px;">({{ post.from_year.year}} -
                             {{post.to_year.year}})
                         </p>
-
                         <h3><code id='post_heading' class='text-uppercase'> {{post.position_held}}</code></h3>
-                        <p style="text-align: center;" class="font-italic text-muted text-uppercase">
+                        <p class="font-italic text-muted text-uppercase">
                             {{post.organization}}
                         </p>
 
                         <p>{{post.summary}}</p>
 
+                        <div style="margin-top: 4px; margin-bottom: 4px;">
+
+                            <p class="font-italic text-muted mb-0">{{project.tech_used}}
+                            </p>
+                            <a href="{{project.project_url}}">{{project.project_url}} </a>
+                            <a href="{{project.github_link}}">{{project.github_link}} </a>
+                        </div>
                     </div>
                 </div>
-                <!-- end of main card -->
-                {% if forloop.counter|divisibleby:3 or forloop.last %}
             </div>
-            {% endif %}
-            {% endfor %}
+            {% if forloop.counter|divisibleby:3 or forloop.last %}
         </div>
-        <!-- end of row -->
-
+        {% endif %}
+        {% endfor %}
     </div>
 
+    <!-- projects -->
     <div class="container">
         <div class="row py-4">
             <div class="col-lg-9 mx-auto text-center">
@@ -76,8 +73,8 @@
                 <div class="card rounded border-0 shadow-lg">
                     <div class="p-4">
                         <!-- <img src="{{project.project_img.url}}" alt="" class="img-fluid d-block mx-auto mb-3"> -->
+                        <h3><code id='post_heading' class='text-uppercase'>{{project.name}}</code></h3>
 
-                        <h5>{{project.name}}</h5>
                         <p class="text-muted font-italic">{{project.summary}}</p>
                         <div style="margin-top: 4px; margin-bottom: 4px;">
 
@@ -95,7 +92,8 @@
         {% endfor %}
 
     </div>
+    <!-- projects -->
 
 </div>
-<!-- end of second part -->
+
 {% endblock front_page %}

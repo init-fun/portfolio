@@ -8,7 +8,8 @@
     <div class="row py-4">
         <div class="col-lg-9 mx-auto text-center">
             <h1 class="display-4">Blog</h1>
-            <p class="lead mb-0">These are just some blogpost I've written till now. Come again later, I promise you'll find a more
+            <p class="lead mb-0">These are just some blogpost I've written till now. Come again later, I promise you'll
+                find a more
                 organized blogposts. That being said I have written {% total_posts %} posts so far.
             </p>
         </div>
@@ -24,10 +25,7 @@
     {% if forloop.first or forloop.counter0|divisibleby:2 %}
     <div class="row">
         {% endif %}
-        <div class="col-md-6">
-
-            <!-- new card -->
-
+        <div class="col">
             <div class="card mb-3" style="max-width: 540px;display: inline-block;">
                 <div class="row no-gutters" style="display: inline-block;">
                     <div class="col-md-12">
@@ -45,26 +43,14 @@
                                 {{ post.title }}
 
                             </h4>
-
-                            <!-- paragraph body -->
                             <p>{{post.body |truncatechars:240}}
-                                <!-- <a href="{{post.get_absolute_url}}">{{ post.title }}</a> -->
-
                                 <a href="{{post.get_absolute_url}}">Read more</a>
-
                             </p>
-                            <!-- end of paragraph body -->
-
                             <p class="card-text"><small class="text-muted">Last updated on {{post.publish}}</small></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- new card end -->
-
-            <!-- second try -->
-
-            <!--end of second try  -->
         </div>
         {% if forloop.counter|divisibleby:2 or forloop.last %}
     </div>
