@@ -102,5 +102,17 @@
   }
 
  /* all links */
-a:link {text-decoration:none;}
-a:hover {text-decoration:underline;}
+a:link {
+  text-decoration:none;
+}
+a:hover {
+  text-decoration:underline;
+}
+
+.fab:hover{
+  color:#d63384;
+
+}
+.fas:hover{
+  color:#d63384;
+}
