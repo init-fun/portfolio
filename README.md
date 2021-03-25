@@ -1,6 +1,7 @@
 # A portfolio/blog website
 
 A django project, a portfolio/blog website. Made using Python,Django,HTML,CSS,BOOTSTRAP.
+![image](https://user-images.githubusercontent.com/65326183/112427861-4b061a00-8d60-11eb-87dc-777a08941099.png)
 
 
 
