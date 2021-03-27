@@ -73,7 +73,7 @@ DATABASES = {
         "USER": "postgres",
         "PASSWORD": "yBJT$NbW3R$3R417ppj",
         "PORT": "5432",
-        "HOST": "kapilraj.herokuapp.com",
+        "HOST": "localhost",
     }
 }
 
