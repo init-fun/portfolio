@@ -13,7 +13,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = TEMPLATES_DEBUG = False
 
 
-ALLOWED_HOSTS = ["kapilraj.herokuapp.com"]
+ALLOWED_HOSTS = ["kapilraj.herokuapp.com", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -66,17 +66,22 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": "portfolio-db",
+#         "USER": "postgres",
+#         "PASSWORD": "yBJT$NbW3R$3R417ppj",
+#         "PORT": "5432",
+#         "HOST": "localhost",
+#     }
+# }
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "portfolio-db",
-        "USER": "postgres",
-        "PASSWORD": "yBJT$NbW3R$3R417ppj",
-        "PORT": "5432",
-        "HOST": "localhost",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
